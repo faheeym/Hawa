@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  filmpire-api:
+    image: hchen0496/filmpire-client:2.0
+    environment:
+      - API_URL=http://filmpireapi-env-1.eba-n4cmcdmv.us-east-1.elasticbeanstalk.com
+    ports:
+      - 80:80
