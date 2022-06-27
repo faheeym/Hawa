@@ -1,0 +1,48 @@
+@url = http://localhost:8080/api/userprofile
+
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXdhIiwic3ViIjoiTmFoaWQiLCJyb2xlcyI6IlJPTEVfVVNFUiIsImV4cCI6MTY1NjI4OTQ0MH0.lZcL7tcVhBkSBaJrlgpiLRygRiw0gxrq_H7AyyFjM08
+
+### Find Profile By Username
+GET {{url}}/Nahid HTTP/1.1
+
+### Add User Details
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "first_name":"Rafi",
+    "last_name":"Hossain",
+    "birthday":"1999-04-12",
+    "email":"nahid@gmail.com",
+    "relation_status":"Single",
+    "profile_picture":"https://i.ibb.co/GQHPzTJ/IMG-2567.jpg",
+    "username":"Nahid"
+}
+
+### Update User Details
+PUT {{url}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"Nahid",
+    "first_name":"Rafi1",
+    "last_name":"Hossain",
+    "profile_picture":"https://i.ibb.co/GQHPzTJ/IMG-2567.jpg",
+    "relation_status":"Single",
+    "birthday":"1999-04-12",
+    "email":"nahid@gmail.com"
+    
+    
+}
+
+
+### Login
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "Admin",
+  "password": "P@ssw0rd!"
+}

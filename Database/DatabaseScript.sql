@@ -50,3 +50,18 @@ constraint fk_post_app_user_id
 foreign key (app_user_id)
 references app_user(app_user_id)
 );
+
+insert into app_role (`name`) values
+    ('USER'),
+    ('ADMIN');
+
+-- passwords are set to "P@ssw0rd!"
+insert into app_user (app_user_id, username, password_hash) values
+	(1,'Admin','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa'),
+	(2,'Test','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa');
+
+    
+insert into app_user_role (app_user_id, app_role_id) values
+	(1,2),
+	(2,1);
+    

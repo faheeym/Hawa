@@ -1,0 +1,25 @@
+@url = http://localhost:8080
+
+
+### Log in
+
+POST {{url}}/authenticate HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "Nahid",
+  "password": "P@ssw0rd!"
+}
+
+### Register
+
+POST {{url}}/register HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "Admin",
+  "password": "P@ssw0rd!"
+
+}
