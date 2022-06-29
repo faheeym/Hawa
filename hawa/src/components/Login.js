@@ -76,7 +76,7 @@ return (
       <div class="forms-container">
         <div class="signin-signup">
           <form action="#" class="sign-in-form" onSubmit={handleSubmit}>
-            <h2 class="title">Sign in</h2>
+            <h2 class="title">Log  in to Hawa</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Username" 
@@ -119,9 +119,38 @@ return (
 
           <form action="#" class="sign-up-form" onSubmit={handleSubmitRegister}>
             <h2 class="title">Sign up</h2>
-            <div class="input-field">
+
+            <div className="-mx-2 md:flex">
+              <div className="input-field2">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" 
+                <input
+                  placeholder="First Name"
+                  id="name"
+                  type="text"
+                  name="name"
+                  
+                  onChange={handleChange}
+                ></input>
+              </div>
+
+              <div className="input-field2">
+              <i class="fas fa-user"></i>
+                <input
+                  placeholder="Last Name"
+                  id="email"
+                  type="email"
+                  name="email"
+                  
+                  onChange={handleChange}
+                ></input>
+              </div>
+
+           
+            </div>
+
+            <div class="input-field">
+            <i class="fas fa-envelope"></i>
+              <input type="text" placeholder="Email/Username" 
               id="username"
               name="username"
               autoComplete="username"
@@ -129,10 +158,7 @@ return (
               value={credentials.username} onChange={handleChange}
               />
             </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div>
+          
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" 
@@ -143,6 +169,24 @@ return (
               value={credentials.password} onChange={handleChange}
               />
             </div>
+            <div class="input-field">
+              <i class="fas fa-calendar"></i>
+              <input type="date" placeholder="Birthday" />
+            </div>
+            <div class="input-field" >
+            
+            <i class="fa fa-venus-mars" ></i>
+              <select class="input-field1">
+              
+              <option disabled selected>Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+              </select>
+            </div>
+
+         
+
             <input type="submit" class="btn" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
