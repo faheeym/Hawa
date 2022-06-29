@@ -31,11 +31,12 @@ create table user_profile(
 user_profile_id int primary key auto_increment,
 first_name longtext not null,
 last_name longtext not null,
-birthday date,
-email varchar(100),
+birthday date not null,
+email varchar(100) not null unique,
 relation_status varchar(70),
 profile_picture longtext,
-app_user_id int not null,
+app_user_id int not null unique,
+gender varchar(45) not null,
 constraint fk_user_profile_app_user_id
 foreign key (app_user_id)
 references app_user(app_user_id)
@@ -60,8 +61,10 @@ insert into app_user (app_user_id, username, password_hash) values
 	(1,'Admin','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa'),
 	(2,'Test','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa');
 
-    
+
 insert into app_user_role (app_user_id, app_role_id) values
 	(1,2),
 	(2,1);
     
+ insert into user_profile( gender, first_name, last_name, birthday, email, relation_status, profile_picture, app_user_id) 
+ values("Male","Fahim","Hossain","1999/12/12","Faheeym@gmail.com","Married", "https://i.ibb.co/GQHPzTJ/IMG-2567.jpg",1);   

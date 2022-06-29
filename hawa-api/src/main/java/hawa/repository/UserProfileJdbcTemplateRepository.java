@@ -26,7 +26,7 @@ public class UserProfileJdbcTemplateRepository implements UserProfileRepository{
     @Override
     public UserProfile findByUsername(String username) {
         final String sql= """
-                select u.user_profile_id, u.first_name, u.last_name, u.birthday, u.email, u.relation_status, u.profile_picture,
+                select u.user_profile_id, u.first_name, u.last_name, u.gender, u.birthday, u.email, u.relation_status, u.profile_picture,
                 a.username from user_profile u inner join app_user a where a.username= ?;
                 """;
         UserProfile result = jdbcTemplate.query(sql, new UserProfileMapper(), username).stream()
@@ -43,7 +43,7 @@ public class UserProfileJdbcTemplateRepository implements UserProfileRepository{
             return null;
         }
         final String sql = """
-                insert into user_profile(user_profile_id, first_name, last_name, birthday, email, relation_status, profile_picture, app_user_id) values(?,?,?,?,?,?,?,?);
+                insert into user_profile(user_profile_id, first_name, last_name, birthday, email, relation_status, profile_picture, app_user_id, gender) values(?,?,?,?,?,?,?,?,?);
                 """;
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection ->{
@@ -56,6 +56,7 @@ public class UserProfileJdbcTemplateRepository implements UserProfileRepository{
             ps.setString(6, userProfile.getRelation_status());
             ps.setString(7, userProfile.getProfile_picture());
             ps.setInt(8, userProfile.getApp_user_id());
+            ps.setString(9,userProfile.getGender());
             return ps;
         }, keyHolder);
 
@@ -82,7 +83,8 @@ public class UserProfileJdbcTemplateRepository implements UserProfileRepository{
                 profile_picture = ?,
                 relation_status = ?,
                 birthday = ?,
-                email = ?
+                email = ?,
+                gender= ?
                 where user_profile_id =?;
                 """;
 
@@ -94,6 +96,7 @@ public class UserProfileJdbcTemplateRepository implements UserProfileRepository{
                 userProfile.getRelation_status(),
                 userProfile.getBirthday(),
                 userProfile.getEmail(),
+                userProfile.getGender(),
                 userProfile.getUser_profile_id())>0;
     }
 }

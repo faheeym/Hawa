@@ -23,6 +23,7 @@ public class UserProfileMapper implements RowMapper<UserProfile> {
             userProfile.setBirthday(rs.getDate("birthday").toLocalDate());
         }
         userProfile.setProfile_picture(rs.getString("profile_picture"));
+        userProfile.setGender(rs.getString("gender"));
         return userProfile;
     }
 }

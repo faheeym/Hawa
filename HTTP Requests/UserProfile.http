@@ -3,7 +3,7 @@
 @token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXdhIiwic3ViIjoiTmFoaWQiLCJyb2xlcyI6IlJPTEVfVVNFUiIsImV4cCI6MTY1NjI4OTQ0MH0.lZcL7tcVhBkSBaJrlgpiLRygRiw0gxrq_H7AyyFjM08
 
 ### Find Profile By Username
-GET {{url}}/Nahid HTTP/1.1
+GET {{url}}/Admin HTTP/1.1
 
 ### Add User Details
 POST {{url}} HTTP/1.1
@@ -25,7 +25,8 @@ PUT {{url}}/1 HTTP/1.1
 Content-Type: application/json
 
 {
-    "username":"Nahid",
+    "user_profile_id":1,
+    "username":"Admin",
     "first_name":"Rafi1",
     "last_name":"Hossain",
     "profile_picture":"https://i.ibb.co/GQHPzTJ/IMG-2567.jpg",

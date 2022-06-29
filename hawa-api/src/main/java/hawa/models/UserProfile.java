@@ -10,6 +10,8 @@ public class UserProfile {
 private int user_profile_id;
 private int app_user_id;
 
+@NotNull(message = "Gender is required")
+private String gender;
 @NotNull(message = "Email is required")
 private String email;
 @NotNull(message = "First Name is required")
