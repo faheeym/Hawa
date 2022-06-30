@@ -4,19 +4,7 @@ import {findByUsername, logout } from '../services/authApi';
 import AuthContext from '../contexts/AuthContext';
 import './UserProfileSelfView.css';
 import Footer from './Footer';
-const EMPTY_USER = {
 
-    "app_user_id": 0,
-    "username": "",
-    "password": "",
-    "email": "",
-    "first_name":"",
-    "last_name":"",
-    "birthday":"",
-    "relation_status":"",
-    "gender":"",
-    "profile_picture":""
-};
 
 function UserProfileSelfView(){
 
@@ -77,7 +65,7 @@ const fetchUser=()=>{
                 <div class="w-full px-4">
                     <p class="font-light leading-relaxed text-slate-600 mb-4">An artist of considerable range, Mike is the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm.</p>
                     {/* <a href="javascript:;" class="font-normal text-slate-700 hover:text-slate-400">Edit</a> */}
-                    <button className='btn info'>Edit</button>
+                    <button className='btn info'><Link to="/editUserProfile">Edit</Link></button>
                 </div>
             </div>
         </div>

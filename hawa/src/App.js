@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import AuthContext from "./contexts/AuthContext";
 import UserProfileSelfView from "./components/UserProfileSelfView";
+import UserProfileEdit from "./components/UserProfileEdit";
 const REFRESH_TIME = 14 * 60 * 1000;
 const EMPTY_USER = {
   username: "",
@@ -55,6 +56,10 @@ function App() {
           </Route>
 <Route exact path="/home">
   <UserProfileSelfView/>
+</Route>
+
+<Route  path="/EditUserProfile">
+  <UserProfileEdit/>
 </Route>
 
 </Switch>

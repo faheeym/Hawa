@@ -8,6 +8,16 @@ export async function findByUsername(username) {
     return Promise.reject(["Unable to fetch user"]);
   }
 }
+
+export async function updateUser(username) {
+  const response = await fetch(`${url}/${username}`);
+  if (response.status === 200) {
+    return await response.json();
+  } else {
+    return Promise.reject(["Unable to fetch user"]);
+  }
+}
+
 export async function authenticate(credentials) {
   const init = {
     method: "POST",
