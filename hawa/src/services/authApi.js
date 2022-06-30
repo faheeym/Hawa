@@ -1,5 +1,13 @@
 const url = "http://localhost:8080";
 
+export async function findByUsername(username) {
+  const response = await fetch(`${url}/${username}`);
+  if (response.status === 200) {
+    return await response.json();
+  } else {
+    return Promise.reject(["Unable to fetch user"]);
+  }
+}
 export async function authenticate(credentials) {
   const init = {
     method: "POST",
@@ -41,6 +49,8 @@ export async function register(credentials) {
     return makeUser(result.jwt_token);
   } else if (response.status === 400) {
     return Promise.reject(["This User was already Registered!"]);
+  }else if(response.status===500){
+    return Promise.reject(["Error Creating your account. Please try a different Email Address."])
   }
 }
 

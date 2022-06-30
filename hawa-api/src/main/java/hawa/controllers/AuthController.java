@@ -3,6 +3,7 @@ package hawa.controllers;
 import hawa.domain.Result;
 import hawa.models.AppUser;
 import hawa.models.Credentials;
+import hawa.models.UserProfile;
 import hawa.security.AppUserService;
 import hawa.security.JwtConverter;
 import org.springframework.http.HttpStatus;
@@ -11,10 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -34,6 +32,15 @@ public class AuthController {
         this.service = service;
     }
 
+    @GetMapping("/{username}")
+    public ResponseEntity<AppUser> findByUsername(@PathVariable String username){
+        AppUser userProfile = service.loadUserByUsername(username);
+        if(userProfile==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(userProfile);
+
+    }
 
     @PostMapping("/authenticate")
     public ResponseEntity<Object> authenticate(@RequestBody Credentials credentials) {

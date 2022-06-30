@@ -4,7 +4,7 @@ import { logout, refreshToken } from "./services/authApi";
 import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import AuthContext from "./contexts/AuthContext";
-
+import UserProfileSelfView from "./components/UserProfileSelfView";
 const REFRESH_TIME = 14 * 60 * 1000;
 const EMPTY_USER = {
   username: "",
@@ -53,8 +53,12 @@ function App() {
 <Route exact path="/">
             <Login />
           </Route>
+<Route exact path="/home">
+  <UserProfileSelfView/>
+</Route>
+
 </Switch>
-<Footer/>
+
 </AuthContext.Provider>
 
 

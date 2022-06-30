@@ -6,13 +6,6 @@ create table app_user (
     app_user_id int primary key auto_increment,
     username varchar(50) not null unique,
     password_hash varchar(2048) not null,
-    first_name longtext not null,
-last_name longtext not null,
-birthday varchar(45) not null,
-email varchar(100) not null unique,
-relation_status varchar(70),
-profile_picture longtext,
-gender varchar(45) not null,
     disabled bit not null default(0)
 );
 
@@ -64,12 +57,14 @@ insert into app_role (`name`) values
     ('ADMIN');
 
 -- passwords are set to "P@ssw0rd!"
-insert into app_user (app_user_id, username, password_hash,gender, first_name, last_name, birthday, email, relation_status, profile_picture) values
-	(1,'Admin','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',"Male","Fahim","Hossain","1999/12/12","Faheeym@gmail.com","Married", "https://i.ibb.co/GQHPzTJ/IMG-2567.jpg"),
-	(2,'Test','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',"Male","Fahim","Hossain","1999/12/12","Faheeym11@gmail.com","Married", "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg");
+insert into app_user (app_user_id, username, password_hash) values
+	(1,'Admin','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa'),
+	(2,'Test','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa');
 
 
 insert into app_user_role (app_user_id, app_role_id) values
 	(1,2),
 	(2,1);
     
+ insert into user_profile( gender, first_name, last_name, birthday, email, relation_status, profile_picture, app_user_id) 
+ values("Male","Fahim","Hossain","1999/12/12","Faheeym@gmail.com","Married", "https://i.ibb.co/GQHPzTJ/IMG-2567.jpg",1);   

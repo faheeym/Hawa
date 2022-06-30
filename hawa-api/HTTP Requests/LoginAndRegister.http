@@ -1,0 +1,33 @@
+@url = http://localhost:8080
+
+### Get user info
+GET {{url}}/Admin HTTP/1.1
+
+### Log in
+
+POST {{url}}/authenticate HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "Admin",
+  "password": "P@ssw0rd!"
+}
+
+### Register
+
+POST {{url}}/register HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "Admin12",
+  "password": "P@ssw0rd!",
+  "email": "Faheeym@gm.com",
+  "first_name":"Dan",
+  "last_name":"Dany",
+  "birthday":"1999/12/12",
+  "relation_status":"Single",
+  "gender":"Male"
+
+}

@@ -1,6 +1,7 @@
 package hawa.repository;
 
 import hawa.models.AppUser;
+import hawa.models.Credentials;
 import hawa.repository.mappers.AppUserMapper;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -60,6 +61,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         final String sql = """
                 select
                     app_user_id,
+                    first_name,
+                    last_name,
+                    email,
+                    birthday,
+                    gender,
+                    relation_status,
+                    profile_picture,
                     username,
                     password_hash,
                     disabled
@@ -75,13 +83,24 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     @Transactional
     public AppUser add(AppUser user) {
 
-        final String sql = "insert into app_user ( username, password_hash) values (?, ?);";
+        final String sql = """
+                insert into app_user ( username, password_hash, first_name, last_name, email, gender,
+                relation_status, profile_picture, birthday) values (?,?,?,?,?,?,?,?,?);
+                """;
+        Credentials credentials = new Credentials();
 
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
+            ps.setString(3, user.getFirst_name());
+            ps.setString(4,user.getLast_name());
+            ps.setString(5,user.getEmail());
+            ps.setString(6,user.getGender());
+            ps.setString(7,user.getRelation_status());
+            ps.setString(8,user.getProfile_picture());
+            ps.setString(9, user.getBirthday());
 
             return ps;
         }, keyHolder);

@@ -59,7 +59,8 @@ public class AppUserService implements UserDetailsService {
             return result;
         }
 
-        AppUser appUser = new AppUser(0,  credentials.getUsername(), encoder.encode(credentials.getPassword()),
+        AppUser appUser = new AppUser(0, credentials.getGender(),credentials.getEmail(), credentials.getFirst_name(), credentials.getLast_name(), credentials.getBirthday(), credentials.getRelation_status(), credentials.getProfile_picture(), credentials.getUsername(), encoder.encode(credentials.getPassword()),
+
                 false, List.of("User"));
 
         result.setPayload(repository.add(appUser));

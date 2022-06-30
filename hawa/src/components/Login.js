@@ -1,4 +1,4 @@
-import { LockClosedIcon } from '@heroicons/react/solid'
+
 import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { authenticate, register } from '../services/authApi';
@@ -125,10 +125,10 @@ return (
               <i class="fas fa-user"></i>
                 <input
                   placeholder="First Name"
-                  id="name"
+                  id="first_name"
                   type="text"
-                  name="name"
-                  
+                  name="first_name"
+                  value={credentials.first_name}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -137,10 +137,10 @@ return (
               <i class="fas fa-user"></i>
                 <input
                   placeholder="Last Name"
-                  id="email"
-                  type="email"
-                  name="email"
-                  
+                  id="last_name"
+                  type="text"
+                  name="last_name"
+                  value={credentials.last_name}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -150,7 +150,18 @@ return (
 
             <div class="input-field">
             <i class="fas fa-envelope"></i>
-              <input type="text" placeholder="Email/Username" 
+              <input type="text" placeholder="Email" 
+              id="email"
+              name="email"
+              autoComplete="email"
+              required
+              value={credentials.email} onChange={handleChange}
+              />
+            </div>
+            
+            <div class="input-field">
+            <i class="fas fa-id-badge"></i>
+              <input type="text" placeholder="Username" 
               id="username"
               name="username"
               autoComplete="username"
@@ -164,20 +175,27 @@ return (
               <input type="password" placeholder="Password" 
               id="password"
               name="password"
-              autoComplete="current-password"
+              
               required
               value={credentials.password} onChange={handleChange}
               />
             </div>
             <div class="input-field">
               <i class="fas fa-calendar"></i>
-              <input type="date" placeholder="Birthday" />
+              <input type="date" placeholder="Birthday" 
+              id="birthday"
+              name="birthday"
+              required
+              value={credentials.birthday} onChange={handleChange}/>
             </div>
             <div class="input-field" >
             
             <i class="fa fa-venus-mars" ></i>
-              <select class="input-field1">
-              
+              <select class="input-field1"
+              id="gender"
+              name="gender"
+              required
+              value={credentials.gender} onChange={handleChange}>
               <option disabled selected>Gender</option>
               <option>Male</option>
               <option>Female</option>
@@ -203,6 +221,7 @@ return (
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
+            
           </form>
           <div>
            <Errors errors={errors} />
